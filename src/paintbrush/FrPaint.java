@@ -27,34 +27,88 @@ public class FrPaint extends javax.swing.JFrame {
     private void initComponents() {
 
         panPaint = new javax.swing.JPanel();
+        panSlider = new javax.swing.JPanel();
+        sliderEspessura = new javax.swing.JSlider();
+        lblThickness = new javax.swing.JLabel();
+        lblThicknessIcon = new javax.swing.JLabel();
         panBottom = new javax.swing.JPanel();
         panLeft = new javax.swing.JPanel();
         panCores = new javax.swing.JPanel();
         lblCorInterna = new javax.swing.JLabel();
         panCorInterna = new javax.swing.JPanel();
-        lblCorInterna1 = new javax.swing.JLabel();
-        panCorInterna1 = new javax.swing.JPanel();
+        lblCorExterna = new javax.swing.JLabel();
+        panCorExterna = new javax.swing.JPanel();
+        panConfig = new javax.swing.JPanel();
+        panPincel = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         panRight = new javax.swing.JPanel();
         jColorChooser1 = new javax.swing.JColorChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panPaint.setBackground(new java.awt.Color(204, 204, 204));
+        panPaint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panPaintMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                panPaintMouseReleased(evt);
+            }
+        });
+
+        panSlider.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        sliderEspessura.setOrientation(javax.swing.JSlider.VERTICAL);
+        sliderEspessura.setToolTipText("");
+        sliderEspessura.setName("Tamanho"); // NOI18N
+
+        lblThickness.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThickness.setText("50px");
+
+        lblThicknessIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThicknessIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/markup-line_24px.png"))); // NOI18N
+
+        javax.swing.GroupLayout panSliderLayout = new javax.swing.GroupLayout(panSlider);
+        panSlider.setLayout(panSliderLayout);
+        panSliderLayout.setHorizontalGroup(
+            panSliderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblThickness, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+            .addComponent(sliderEspessura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblThicknessIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panSliderLayout.setVerticalGroup(
+            panSliderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panSliderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblThicknessIcon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sliderEspessura, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblThickness)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout panPaintLayout = new javax.swing.GroupLayout(panPaint);
         panPaint.setLayout(panPaintLayout);
         panPaintLayout.setHorizontalGroup(
             panPaintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 891, Short.MAX_VALUE)
+            .addGroup(panPaintLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panPaintLayout.setVerticalGroup(
             panPaintLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+            .addGroup(panPaintLayout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(panSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         lblCorInterna.setText("Cor Interna");
 
         panCorInterna.setBackground(new java.awt.Color(255, 102, 102));
+        panCorInterna.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout panCorInternaLayout = new javax.swing.GroupLayout(panCorInterna);
         panCorInterna.setLayout(panCorInternaLayout);
@@ -67,18 +121,19 @@ public class FrPaint extends javax.swing.JFrame {
             .addGap(0, 34, Short.MAX_VALUE)
         );
 
-        lblCorInterna1.setText("Cor Externa");
+        lblCorExterna.setText("Cor Externa");
 
-        panCorInterna1.setBackground(new java.awt.Color(255, 102, 102));
+        panCorExterna.setBackground(new java.awt.Color(255, 102, 102));
+        panCorExterna.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout panCorInterna1Layout = new javax.swing.GroupLayout(panCorInterna1);
-        panCorInterna1.setLayout(panCorInterna1Layout);
-        panCorInterna1Layout.setHorizontalGroup(
-            panCorInterna1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panCorExternaLayout = new javax.swing.GroupLayout(panCorExterna);
+        panCorExterna.setLayout(panCorExternaLayout);
+        panCorExternaLayout.setHorizontalGroup(
+            panCorExternaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
-        panCorInterna1Layout.setVerticalGroup(
-            panCorInterna1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panCorExternaLayout.setVerticalGroup(
+            panCorExternaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 34, Short.MAX_VALUE)
         );
 
@@ -91,26 +146,60 @@ public class FrPaint extends javax.swing.JFrame {
                 .addComponent(lblCorInterna)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panCorInterna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCorInterna1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
+                .addComponent(lblCorExterna)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panCorInterna1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(panCorExterna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panCoresLayout.setVerticalGroup(
             panCoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panCoresLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panCoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panCorInterna1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panCorInterna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panCoresLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(lblCorInterna1))
-                    .addGroup(panCoresLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(lblCorInterna)))
+                    .addComponent(lblCorExterna)
+                    .addComponent(lblCorInterna)
+                    .addComponent(panCorExterna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panCorInterna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
+        );
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/brush-line.png"))); // NOI18N
+        jButton2.setText("Pincel");
+        jButton2.setContentAreaFilled(false);
+
+        javax.swing.GroupLayout panPincelLayout = new javax.swing.GroupLayout(panPincel);
+        panPincel.setLayout(panPincelLayout);
+        panPincelLayout.setHorizontalGroup(
+            panPincelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panPincelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panPincelLayout.setVerticalGroup(
+            panPincelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panPincelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panConfigLayout = new javax.swing.GroupLayout(panConfig);
+        panConfig.setLayout(panConfigLayout);
+        panConfigLayout.setHorizontalGroup(
+            panConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panConfigLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panPincel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panConfigLayout.setVerticalGroup(
+            panConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panConfigLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panPincel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panLeftLayout = new javax.swing.GroupLayout(panLeft);
@@ -118,13 +207,16 @@ public class FrPaint extends javax.swing.JFrame {
         panLeftLayout.setHorizontalGroup(
             panLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panCores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panLeftLayout.createSequentialGroup()
+                .addComponent(panConfig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panLeftLayout.setVerticalGroup(
             panLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panLeftLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panCores, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addComponent(panConfig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panCores, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jColorChooser1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -134,15 +226,12 @@ public class FrPaint extends javax.swing.JFrame {
         panRightLayout.setHorizontalGroup(
             panRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panRightLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panRightLayout.setVerticalGroup(
             panRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panRightLayout.createSequentialGroup()
-                .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+            .addComponent(jColorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panBottomLayout = new javax.swing.GroupLayout(panBottom);
@@ -151,9 +240,9 @@ public class FrPaint extends javax.swing.JFrame {
             panBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panBottomLayout.createSequentialGroup()
                 .addComponent(panLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panRight, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(18, 18, 18)
+                .addComponent(panRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panBottomLayout.setVerticalGroup(
             panBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,24 +257,36 @@ public class FrPaint extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panPaint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panPaint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panPaint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panBottom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void panPaintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panPaintMouseClicked
+        Pincel p = new Pincel();
+        p.cor = panCorExterna.getBackground();
+        p.x = evt.getX();
+        p.y = evt.getY();
+        p.espessura = sliderEspessura.getValue();
+        p.desenhar(panPaint.getGraphics());
+    }//GEN-LAST:event_panPaintMouseClicked
+
+    private void panPaintMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panPaintMouseReleased
+        
+    }//GEN-LAST:event_panPaintMouseReleased
 
     /**
      * @param args the command line arguments
@@ -223,15 +324,22 @@ public class FrPaint extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
     private javax.swing.JColorChooser jColorChooser1;
+    private javax.swing.JLabel lblCorExterna;
     private javax.swing.JLabel lblCorInterna;
-    private javax.swing.JLabel lblCorInterna1;
+    private javax.swing.JLabel lblThickness;
+    private javax.swing.JLabel lblThicknessIcon;
     private javax.swing.JPanel panBottom;
+    private javax.swing.JPanel panConfig;
+    private javax.swing.JPanel panCorExterna;
     private javax.swing.JPanel panCorInterna;
-    private javax.swing.JPanel panCorInterna1;
     private javax.swing.JPanel panCores;
     private javax.swing.JPanel panLeft;
     private javax.swing.JPanel panPaint;
+    private javax.swing.JPanel panPincel;
     private javax.swing.JPanel panRight;
+    private javax.swing.JPanel panSlider;
+    private javax.swing.JSlider sliderEspessura;
     // End of variables declaration//GEN-END:variables
 }
