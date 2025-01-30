@@ -11,24 +11,29 @@ import java.awt.Graphics;
  * @author 12871625689
  */
 public class Cilindro extends D3 {
-    public float raio;
+    public int raio;
     
     @Override
     public float area() {
-        return 0.0f;
+        return ((float)Math.PI * 2 * raio * altura) + ((float)Math.PI * 2 * raio * raio);
     }
     
     @Override
     public float volume() {
-        return 0.0f;
+        return (float)Math.PI * raio * raio * altura;
     }
+    
     @Override
     public float perimetro(){
-        return 0.0f;
+        return (float)Math.PI * 2 * raio;
     }
     
     @Override
     public void desenhar(Graphics g) {
-        
+        g.setColor(cor);
+        g.drawLine(x, y, x, y + altura);
+        g.drawLine(x + 2*raio, y, x + 2*raio, y + altura);
+        g.drawOval(x, y - 10, 2 * raio, 25);
+        g.drawOval(x, y + altura - 10, 2 * raio, 25);
     }
 }

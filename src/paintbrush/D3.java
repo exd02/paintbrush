@@ -11,7 +11,7 @@ import java.awt.Graphics;
  * @author 12871625689
  */
 public abstract class D3 extends Ponto {
-    public float altura;
+    public int altura;
     
     abstract public float area();
     abstract public float volume();

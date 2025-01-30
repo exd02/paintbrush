@@ -12,7 +12,7 @@ import java.lang.Math;
  * @author 12871625689
  */
 public class Circulo extends D2 {
-    public float raio;
+    public int raio;
     
     @Override
     public float area() { return (float) Math.PI * raio * raio;}
@@ -22,7 +22,11 @@ public class Circulo extends D2 {
     
     @Override 
     public void desenhar(Graphics g){
-    
+        g.setColor(cor);
+        g.fillOval(x - raio, y - raio, 2 * raio, 2 * raio);
+        g.setColor(corExterna);
+        g.drawOval(x - raio, y - raio, 2 * raio, 2 * raio);
+        super.desenhar(g);
     }
     
 }

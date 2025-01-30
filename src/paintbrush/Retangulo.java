@@ -22,8 +22,8 @@ public class Retangulo extends D2 {
     @Override public void desenhar(Graphics g){
         super.desenhar(g); 
         g.setColor (cor);
-        g.fillRect(x, y, base, largura);
+        g.fillRect(x, y, largura, base);
         g.setColor (corExterna);
-        g.drawRect(x, y, base, largura);
+        g.drawRect(x, y, largura, base);
     }
 }
